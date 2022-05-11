@@ -37,36 +37,32 @@ function Signin() {
 
 
   return (
-    <div>
+    <div className='w-50 mx-auto'>
       <h2>SignIn Now</h2>
-      <button onClick={() => signInWithGoogle()} className="Btn">Google Singin</button>
-      <button onClick={() => signInWithGithub()} className="Btn">Github Singin</button>
-      <button onClick={() => signInWithFacebook()} className="Btn">Facebook Singin</button>
+      <button onClick={() => signInWithGoogle()} className="btn btn-primary">Google Singin</button>
+      <button onClick={() => signInWithGithub()} className="btn btn-primary m-3">Github Singin</button>
+      <button onClick={() => signInWithFacebook()} className="btn btn-primary">Facebook Singin</button>
+      <div class="container">
+        <div class="row">
+          <div class="col">
+            <form onSubmit={handleSignInUser}>
+              <div class="form-group my-3">
+                <input onBlur={handleEmailBlur} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
 
+              </div>
+              <div class="form-group my-3">
+                <input onBlur={handlePasswordBlur} type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required />
+              </div>
+              <div class="form-check my-3">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+              </div>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
 
-      {/* <form>
-        <div class="form-group">
-          <label for="exampleInputEmail1">Email address</label>
-          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-        </div>
-        <div class="form-group">
-          <label for="exampleInputPassword1">Password</label>
-          <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-        </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </form> */}
-
-      <form onSubmit={handleSignInUser}>
-        <input onBlur={handleEmailBlur} type="email" placeholder='your email' required /> <br />
-        <input onBlur={handlePasswordBlur} type="password" placeholder='your password' required /> <br />
-        <p>{error?.message}</p>
-        <input type="submit" value="Submit" />
-      </form>
       <p>new to user <Link to="/Register">Register Now</Link></p>
     </div>
   )
