@@ -35,26 +35,26 @@ function About() {
           <h2>Skills</h2>
 
           <div class="bg-info pt-2 pb-1 px-1 m-2">
-            <p class="ms-3">html</p>
+            <p class="ms-3">JAVASCRIPT</p>
             <div class="progress m-3" style={{ height: '30px' }}>
-              <div class="progress-bar bg-success" role="progressbar" style={{ width: "%25" }} aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100">25%</div>
+              <div class="progress-bar bg-success" role="progressbar" style={{ width: '75%' }} aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100">75%</div>
             </div>
           </div>
 
           <div class="bg-info pt-2 pb-1 px-1 m-2">
-            <p class="ms-3">html</p>
+            <p class="ms-3">REACT</p>
             <div class="progress m-3" style={{ height: '30px' }}>
-              <div class="progress-bar bg-success" role="progressbar" style={{ width: "%25" }} aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100">25%</div>
+              <div class="progress-bar bg-success" role="progressbar" style={{ width: "65%" }} aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100">65%</div>
             </div>
           </div>
 
           <div class="bg-info pt-2 pb-1 px-1 m-2">
-            <p class="ms-3">html</p>
+            <p class="ms-3">EXPRESS JS</p>
             <div class="progress m-3" style={{ height: '30px' }}>
-              <div class="progress-bar bg-success" role="progressbar" style={{ width: "%25" }} aria-valuenow="25"
-                aria-valuemin="0" aria-valuemax="100">25%</div>
+              <div class="progress-bar bg-success" role="progressbar" style={{ width: "50%" }} aria-valuenow="25"
+                aria-valuemin="0" aria-valuemax="100">50%</div>
             </div>
           </div>
 
