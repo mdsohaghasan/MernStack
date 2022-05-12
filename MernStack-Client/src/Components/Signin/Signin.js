@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Signin.css';
@@ -34,6 +34,15 @@ function Signin() {
     signInWithEmailAndPassword(email, password);
   }
 
+  // reset password 
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
+  const resetPassword = async () => {
+
+    if (email) {
+      await sendPasswordResetEmail(email);
+      alert('Sent email');
+    }
+  }
 
 
   return (
@@ -64,6 +73,7 @@ function Signin() {
       </div>
 
       <p>new to user <Link to="/Register">Register Now</Link></p>
+      <p>Forget Your Password? <button class='btn btn-link' onClick={resetPassword}>Reset Pasword</button> </p>
     </div>
   )
 }

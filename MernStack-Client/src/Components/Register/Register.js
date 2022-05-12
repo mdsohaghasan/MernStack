@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 
@@ -10,13 +10,16 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  // const [agrre, setAgree] = useState('');
 
   const navigate = useNavigate();
 
-  const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth);
+  const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
+  const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
   if (user) {
-    navigate('/home');
+    console.log(user)
+    // navigate('/home');
   }
 
   const handleNameBlur = event => {
@@ -30,13 +33,19 @@ function Register() {
     setPassword(event.target.value);
   }
 
-  const handleCreateUser = event => {
+  // chacked item 
+  // const agrre = event.target.terms.checked;
+
+  const handleCreateUser = async (event) => {
     event.preventDefault();
+
     if (password.length < 6) {
       setError('password must be 6  charecters');
       return;
     }
-    createUserWithEmailAndPassword(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+    alert('Updated profile');
   }
 
   return (
@@ -59,10 +68,14 @@ function Register() {
                 <input onBlur={handlePasswordBlur} type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" required />
               </div>
               <div class="form-check my-3">
-                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
+                <input
+                  // onClick={() => setAgree(!agrre)} 
+                  type="checkbox" name='terms' class="form-check-input" id="exampleCheck1" />
                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
               </div>
-              <button type="submit" class="btn btn-primary">Submit</button>
+              <button
+                // desabled={!agrre} 
+                type="submit" class="btn btn-primary">Submit</button>
             </form>
           </div>
         </div>
