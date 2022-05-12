@@ -67,13 +67,6 @@ function Register() {
           </div>
         </div>
       </div>
-
-      {/* <form onSubmit={handleCreateUser}>
-           <input onBlur={handleNameBlur} type="text" placeholder='your name' required/> <br/>
-           <input onBlur={handleEmailBlur} type="email" placeholder='your email' required/> <br/>
-           <input onBlur={handlePasswordBlur} type="password" placeholder='your password' required/> <br/>
-           <input type="submit" value="Submit"/> 
-      </form> */}
       <p>Already user <Link to="/Signin">Signin Now</Link></p>
     </div>
   )

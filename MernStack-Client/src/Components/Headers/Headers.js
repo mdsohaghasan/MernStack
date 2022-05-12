@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import { signOut } from 'firebase/auth';
+import { Button } from 'bootstrap';
 
 
 function Headers() {
@@ -40,6 +41,16 @@ function Headers() {
               <li class="nav-item">
                 <Link to="/Register" class="nav-link">Register</Link>
               </li>
+              {/* username show */}
+              <li class="nav-item">
+                {
+                  user ?
+                    <p class="nav-link">{user.email}</p>
+                    :
+                    < Link to="/Signin" class="nav-link">Signin</Link>
+                }
+              </li>
+
               <li class="nav-item">
                 {
                   user ?
@@ -48,6 +59,7 @@ function Headers() {
                     < Link to="/Signin" class="nav-link">Signin</Link>
                 }
               </li>
+
             </ul>
           </div>
         </div>
