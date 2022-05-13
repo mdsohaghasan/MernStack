@@ -9,9 +9,6 @@ import auth from '../../firebase.init';
 
 function Register() {
 
-    // const [name, setName] = useState('');
-    // const [email, setEmail] = useState('');
-    // const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     // const [agrre, setAgree] = useState('');
 
@@ -25,16 +22,6 @@ function Register() {
         navigate('/home');
     }
 
-    // const handleNameBlur = event => {
-    //     setName(event.target.value);
-    // }
-    // const handleEmailBlur = event => {
-    //     setEmail(event.target.value);
-    // }
-
-    // const handlePasswordBlur = event => {
-    //     setPassword(event.target.value);
-    // }
 
     // chacked item
     // const agrre = event.target.terms.checked;
@@ -44,6 +31,7 @@ function Register() {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
+        console.log(name, email, password)
 
         if (password.length < 6) {
             setError('password must be 6  charecters');
@@ -63,21 +51,15 @@ function Register() {
                         <form onSubmit={handleCreateUser}>
 
                             <div class="form-group my-3">
-                                <input
-                                    // onBlur={handleNameBlur}
-                                    type="name" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" required />
+                                <input type="name" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name" required />
                             </div>
 
                             <div class="form-group my-3">
-                                <input
-                                    // onBlur={handleEmailBlur}
-                                    type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
                             </div>
 
                             <div class="form-group my-3">
-                                <input
-                                    // onBlur={handlePasswordBlur} 
-                                    type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" required />
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" required />
                             </div>
                             <div class="form-check my-3">
                                 <input
@@ -86,7 +68,7 @@ function Register() {
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
                             <button
-                                // desabled={!agrre}
+                                // disabled={!agrre}
                                 type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
