@@ -8,8 +8,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function Signin() {
 
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+    // const [email, setEmail] = useState('');
+    // const [password, setPassword] = useState('');
     // const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
@@ -24,15 +24,17 @@ function Signin() {
         navigate(from, { replace: true });
     }
 
-    const handleEmailBlur = event => {
-        setEmail(event.target.value);
-    }
-    const handlePasswordBlur = event => {
-        setPassword(event.target.value);
-    }
+    // const handleEmailBlur = event => {
+    //     setEmail(event.target.value);
+    // }
+    // const handlePasswordBlur = event => {
+    //     setPassword(event.target.value);
+    // }
     const handleSignInUser = event => {
         event.preventDefault();
-
+        const email = event.target.email.value;
+        const password = event.target.password.value;
+        console.log(email, password)
         signInWithEmailAndPassword(email, password);
     }
 
@@ -61,11 +63,11 @@ function Signin() {
                     <div class="col">
                         <form onSubmit={handleSignInUser}>
                             <div class="form-group my-3">
-                                <input onBlur={handleEmailBlur} type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
+                                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" required />
 
                             </div>
                             <div class="form-group my-3">
-                                <input onBlur={handlePasswordBlur} type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required />
+                                <input name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required />
                             </div>
                             <div class="form-check my-3">
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
