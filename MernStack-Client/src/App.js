@@ -16,7 +16,7 @@ import AddMyItem from './Components/MyItems/Add Item/AddMyItem';
 import UpdateMyItem from './Components/MyItems/UpdateItem/UpdateMyItem';
 import AddItem from './Components/Inventory/Add Item/AddItem';
 import UpdateItem from './Components/Inventory/UpdateItem/UpdateItem';
-import Checkout from './Components/Checkout/Checkout';
+// import Checkout from './Components/Checkout/Checkout';
 
 
 function App() {

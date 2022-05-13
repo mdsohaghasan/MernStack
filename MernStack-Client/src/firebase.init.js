@@ -7,19 +7,21 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 const firebaseConfig = {
 
-  apiKey: process.env.REACT_APP_apiKey,
-  authDomain: process.env.REACT_APP_authDomain,
-  projectId: process.env.REACT_APP_projectId,
-  storageBucket: process.env.REACT_APP_storageBucket,
-  messagingSenderId: process.env.REACT_APP_messagingSenderId,
-  appId: process.env.REACT_APP_appId
+  // apiKey: process.env.REACT_APP_apiKey,
+  // authDomain: process.env.REACT_APP_authDomain,
+  // projectId: process.env.REACT_APP_projectId,
+  // storageBucket: process.env.REACT_APP_storageBucket,
+  // messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  // appId: process.env.REACT_APP_appId
 
-  // apiKey: "AIzaSyAJK5vSEjC0CxUEZ9RRTK3SPo5G-JLxRGQ",
-  // authDomain: "warehouse-67541.firebaseapp.com",
-  // projectId: "warehouse-67541",
-  // storageBucket: "warehouse-67541.appspot.com",
-  // messagingSenderId: "270314049492",
-  // appId: "1:270314049492:web:28b428bad2d446e7eb5041"
+  apiKey: "AIzaSyAJK5vSEjC0CxUEZ9RRTK3SPo5G-JLxRGQ",
+  authDomain: "warehouse-67541.firebaseapp.com",
+  projectId: "warehouse-67541",
+  storageBucket: "warehouse-67541.appspot.com",
+  messagingSenderId: "270314049492",
+  appId: "1:270314049492:web:28b428bad2d446e7eb5041"
+
+
 };
 
 // Initialize Firebase

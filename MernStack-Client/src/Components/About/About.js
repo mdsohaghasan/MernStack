@@ -24,7 +24,7 @@ function About() {
 
         <div class="col m-5">
           <div class="max-width:50% height:auto">
-            <img src={img} class="img-fluid rounded" alt="sohag-photo" />
+            <img src={img} class="img-fluid rounded" alt="sohag-pic" />
           </div>
 
         </div>
