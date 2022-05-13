@@ -1,6 +1,9 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import {
+  useCreateUserWithEmailAndPassword,
+  // useUpdateProfile 
+} from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
 
@@ -15,11 +18,11 @@ function Register() {
   const navigate = useNavigate();
 
   const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-  const [updateProfile, updating, error1] = useUpdateProfile(auth);
+  // const [updateProfile, updating, error1] = useUpdateProfile(auth);
 
   if (user) {
     console.log(user)
-    // navigate('/home');
+    navigate('/home');
   }
 
   const handleNameBlur = event => {
@@ -44,8 +47,8 @@ function Register() {
       return;
     }
     await createUserWithEmailAndPassword(email, password);
-    await updateProfile({ displayName: name });
-    alert('Updated profile');
+    // await updateProfile({ displayName: name });
+    // alert('Updated profile');
   }
 
   return (

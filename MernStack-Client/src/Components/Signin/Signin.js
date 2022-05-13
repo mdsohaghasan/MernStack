@@ -3,6 +3,8 @@ import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWith
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Signin.css';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function Signin() {
 
@@ -40,7 +42,10 @@ function Signin() {
 
     if (email) {
       await sendPasswordResetEmail(email);
-      alert('Sent email');
+      toast('Sent email');
+    }
+    else {
+      toast('Pleace Enter Your Currect Email Address');
     }
   }
 
@@ -74,6 +79,7 @@ function Signin() {
 
       <p>new to user <Link to="/Register">Register Now</Link></p>
       <p>Forget Your Password? <button class='btn btn-link' onClick={resetPassword}>Reset Pasword</button> </p>
+      <ToastContainer />
     </div>
   )
 }

@@ -7,6 +7,7 @@ import InventoryItem from "../Inventory/InventoryItem";
 
 function Home() {
   return (
+
     <div>
       <div
         id="carouselExampleIndicators"
@@ -67,7 +68,6 @@ function Home() {
       </div>
 
       <div>
-
         <InventoryItem></InventoryItem>
         <Link to="/Inventory" class="btn btn-primary">get Inventory</Link>
 
