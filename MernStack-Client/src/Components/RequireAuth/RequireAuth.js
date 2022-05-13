@@ -7,7 +7,7 @@ import { ToastContainer, toast } from 'react-toastify';
 function RequireAuth({ children }) {
     const [user, loading] = useAuthState(auth);
     const location = useLocation();
-    // const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
+    const [sendEmailVerification, sending, error] = useSendEmailVerification(auth);
     if (loading) {
         return <loading></loading>
     }
@@ -20,13 +20,13 @@ function RequireAuth({ children }) {
         return <div>
             <h1 className='text-danger'>Your Email Is Not Verified</h1>
             <h3>Plese Check Your Email</h3>
-            {/* <button className='btn btn-primary' onClick={async () => {
+            <button className='btn btn-primary' onClick={async () => {
                 await sendEmailVerification();
                 toast('Sent email');
             }}
             >
                 Verify email Again
-            </button> */}
+            </button>
             <ToastContainer />
         </div>
     }
