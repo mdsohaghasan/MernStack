@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react'
+import React, { useRef } from 'react'
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import './Signin.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SocialLogin from './SocialLogin/SocialLogin';
 
 function Signin() {
 
@@ -27,7 +28,7 @@ function Signin() {
         event.preventDefault();
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        console.log(email, password)
+
         signInWithEmailAndPassword(email, password);
     }
 
@@ -48,9 +49,10 @@ function Signin() {
     return (
         <div className='w-50 mx-auto'>
             <h2>SignIn Now</h2>
-            <button onClick={() => signInWithGoogle()} className="btn btn-primary">Google Singin</button>
+            <SocialLogin></SocialLogin>
+            {/* <button onClick={() => signInWithGoogle()} className="btn btn-primary">Google Singin</button>
             <button onClick={() => signInWithGithub()} className="btn btn-primary m-3">Github Singin</button>
-            <button onClick={() => signInWithFacebook()} className="btn btn-primary">Facebook Singin</button>
+            <button onClick={() => signInWithFacebook()} className="btn btn-primary">Facebook Singin</button> */}
             <div class="container">
                 <div class="row">
                     <div class="col">

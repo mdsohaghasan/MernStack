@@ -31,7 +31,6 @@ function Register() {
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
-        console.log(name, email, password)
 
         if (password.length < 6) {
             setError('password must be 6  charecters');
