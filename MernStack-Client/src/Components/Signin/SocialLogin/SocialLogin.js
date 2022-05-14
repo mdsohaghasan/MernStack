@@ -16,14 +16,14 @@ const SocialLogin = () => {
     const from = location.state?.from?.pathname || '/'
 
     let errorElement;
-    if (error || error1) {
+    if (error || error1 || error2) {
         errorElement = <div>
-            <p>Error: {error?.message} {error1?.message}</p>
+            <p>Error: {error?.message} {error1?.message} {error2?.message}</p>
         </div>
     }
 
 
-    if (user || user1) {
+    if (user || user1 || user2) {
         navigate(from, { replace: true });
     }
 
@@ -39,7 +39,7 @@ const SocialLogin = () => {
             <div>
                 <button onClick={() => signInWithGoogle()} className='btn btn-info w-50 d-block mx-auto my-2'> <img style={{ width: '30px' }} src={google} alt="" /> <span className='px-2'>Google Sign In</span> </button>
 
-                <button className='btn btn-info w-50 d-block mx-auto my-2'> <img style={{ width: '30px' }} src={facebook} alt="" /> <span className='px-2'>Facebook Sign In</span> </button>
+                <button onClick={() => signInWithFacebook()} className='btn btn-info w-50 d-block mx-auto my-2'> <img style={{ width: '30px' }} src={facebook} alt="" /> <span className='px-2'>Facebook Sign In</span> </button>
 
                 <button onClick={() => signInWithGithub()} className='btn btn-info w-50 d-block mx-auto my-2'> <img style={{ width: '30px' }} src={github} alt="" /> <span className='px-2'>Github Sign In</span> </button>
 
