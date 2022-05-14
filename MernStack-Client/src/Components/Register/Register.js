@@ -3,23 +3,18 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import SocialLogin from '../Signin/SocialLogin/SocialLogin';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 function Register() {
 
-    const [error, setError] = useState('');
+    const [error, setError] = useState(''); // register feild error state
     const [agrre, setAgree] = useState(false);
 
     const navigate = useNavigate();
 
     const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
     const [updateProfile, updating, updateError] = useUpdateProfile(auth);
-
-    if (user) {
-        console.log(user)
-        // navigate('/home');
-    }
-
 
 
     const handleCreateUser = async (event) => {
@@ -30,7 +25,7 @@ function Register() {
 
         await createUserWithEmailAndPassword(email, password);
         await updateProfile({ displayName: name });
-        alert('Updated profile');
+        toast('Your Profile Is Created');
         navigate('/home');
         if (password.length < 6) {
             setError('password must be 6  charecters');
@@ -60,14 +55,10 @@ function Register() {
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password" required />
                             </div>
                             <div class="form-check my-3">
-                                <input
-                                    onClick={() => setAgree(!agrre)}
-                                    type="checkbox" name='terms' class="" id="exampleCheck1" />
+                                <input onClick={() => setAgree(!agrre)} type="checkbox" name='terms' id="exampleCheck1" />
                                 <label className={`ps-2 ${agrre ? '' : `text-danger`}`} for="exampleCheck1">Accept Mobile House Terms And Conditions</label>
                             </div>
-                            <button
-                                disabled={!agrre}
-                                type="submit" class="btn btn-primary w-100">Register Now</button>
+                            <button disabled={!agrre} type="submit" class="btn btn-primary w-100">Register Now</button>
                         </form>
                     </div>
                 </div>

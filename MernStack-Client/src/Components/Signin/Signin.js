@@ -1,14 +1,15 @@
-import React, { useRef } from 'react'
-import { useSendPasswordResetEmail, useSignInWithEmailAndPassword, useSignInWithFacebook, useSignInWithGithub, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import React, { useRef, useState } from 'react'
+import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
-import './Signin.css';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from './SocialLogin/SocialLogin';
+import './Signin.css';
+
 
 function Signin() {
-
+    const [agrre, setAgree] = useState(false);
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
@@ -67,10 +68,10 @@ function Signin() {
                                 <input ref={passwordRef} name="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required />
                             </div>
                             <div class="form-check my-3">
-                                <input type="checkbox" class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                <input onClick={() => setAgree(!agrre)} type="checkbox" name='terms' id="exampleCheck1" />
+                                <label className={`ps-2 ${agrre ? '' : `text-danger`}`} for="exampleCheck1">Accept Mobile House Terms And Conditions</label>
                             </div>
-                            <button type="submit" class="btn btn-primary w-100">Sign In Now</button>
+                            <button disabled={!agrre} type="submit" class="btn btn-primary w-100">Sign In Now</button>
 
                         </form>
                     </div>
