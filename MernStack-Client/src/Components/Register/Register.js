@@ -69,13 +69,16 @@ function Register() {
                             </div>
                             <button
                                 // disabled={!agrre}
-                                type="submit" class="btn btn-primary">Submit</button>
+                                type="submit" class="btn btn-primary w-100">Register Now</button>
                         </form>
                     </div>
                 </div>
             </div>
+
+            <p>Already Have an Account <Link to="/Signin">Signin Now</Link></p>
+
             <SocialLogin></SocialLogin>
-            <p>Already user <Link to="/Signin">Signin Now</Link></p>
+
         </div>
     )
 }

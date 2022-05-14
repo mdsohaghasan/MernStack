@@ -65,16 +65,17 @@ function Signin() {
                                 <input type="checkbox" class="form-check-input" id="exampleCheck1" />
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="submit" class="btn btn-primary w-100">Sign In Now</button>
                         </form>
                     </div>
                 </div>
             </div>
-            <SocialLogin></SocialLogin>
+
 
             <p>new to user <Link to="/Register">Register Now</Link></p>
             <p>Forget Your Password? <button class='btn btn-link' onClick={resetPassword}>Reset Pasword</button> </p>
             <ToastContainer />
+            <SocialLogin></SocialLogin>
         </div>
     )
 }
