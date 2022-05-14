@@ -21,39 +21,39 @@ function Headers() {
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse mt-2" id="navbarNav">
             <ul class="navbar-nav">
               <li class="nav-item">
-                <Link to="/" class="nav-link active" aria-current="page">Home</Link>
+                <Link to="/" class="nav-link active" aria-current="page">HOME</Link>
               </li>
               <li class="nav-item">
-                <Link to="/Inventory" class="nav-link">Inventory</Link>
+                <Link to="/Inventory" class="nav-link">INVENTORY</Link>
               </li>
               <li class="nav-item">
-                <Link to="/myItems" class="nav-link">My Items</Link>
+                <Link to="/myItems" class="nav-link">MY ITEMS</Link>
               </li>
               <li class="nav-item">
-                <Link to="/Blogs" class="nav-link">Blog</Link>
+                <Link to="/Blogs" class="nav-link">BLOG</Link>
               </li>
               <li class="nav-item">
-                <Link to="/About" class="nav-link">About</Link>
+                <Link to="/About" class="nav-link">ABOUT</Link>
               </li>
 
               <li class="nav-item">
                 {
                   user ?
-                    <p class="nav-link">{user.displayName}</p>
+                    <p class="nav-link">{user?.displayName}</p>
                     :
-                    < Link to="/Signin" class="nav-link">Signin</Link>
+                    < Link to="/Signin" class="nav-link">SIGNIN</Link>
                 }
               </li>
 
               <li class="nav-item">
                 {
                   user ?
-                    <button onClick={handleSignOut} class="nav-link btn btn-light">Sign Out</button>
+                    <button onClick={handleSignOut} class="nav-link btn btn-light">SIGNOUT</button>
                     :
-                    <Link to="/Register" class="nav-link">Register</Link>
+                    <Link to="/Register" class="nav-link">REGISTER</Link>
                 }
               </li>
 
