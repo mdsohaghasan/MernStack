@@ -1,9 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
-import {
-    useCreateUserWithEmailAndPassword,
-    // useUpdateProfile
-} from 'react-firebase-hooks/auth';
+import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import SocialLogin from '../Signin/SocialLogin/SocialLogin';
 
@@ -11,21 +8,19 @@ import SocialLogin from '../Signin/SocialLogin/SocialLogin';
 function Register() {
 
     const [error, setError] = useState('');
-    // const [agrre, setAgree] = useState('');
+    const [agrre, setAgree] = useState(false);
 
     const navigate = useNavigate();
 
     const [createUserWithEmailAndPassword, user] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
-    // const [updateProfile, updating, error1] = useUpdateProfile(auth);
+    const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
     if (user) {
         console.log(user)
-        navigate('/home');
+        // navigate('/home');
     }
 
 
-    // chacked item
-    // const agrre = event.target.terms.checked;
 
     const handleCreateUser = async (event) => {
         event.preventDefault();
@@ -33,13 +28,16 @@ function Register() {
         const email = event.target.email.value;
         const password = event.target.password.value;
 
+        await createUserWithEmailAndPassword(email, password);
+        await updateProfile({ displayName: name });
+        alert('Updated profile');
+        navigate('/home');
         if (password.length < 6) {
             setError('password must be 6  charecters');
             return;
         }
-        await createUserWithEmailAndPassword(email, password);
-        // await updateProfile({ displayName: name });
-        // alert('Updated profile');
+
+
     }
 
     return (
@@ -63,23 +61,23 @@ function Register() {
                             </div>
                             <div class="form-check my-3">
                                 <input
-                                    // onClick={() => setAgree(!agrre)}
-                                    type="checkbox" name='terms' class="form-check-input" id="exampleCheck1" />
-                                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                                    onClick={() => setAgree(!agrre)}
+                                    type="checkbox" name='terms' class="" id="exampleCheck1" />
+                                <label className={`ps-2 ${agrre ? '' : `text-danger`}`} for="exampleCheck1">Accept Mobile House Terms And Conditions</label>
                             </div>
                             <button
-                                // disabled={!agrre}
+                                disabled={!agrre}
                                 type="submit" class="btn btn-primary w-100">Register Now</button>
                         </form>
                     </div>
                 </div>
-            </div>
+            </div >
 
-            <p>Already Have an Account <Link to="/Signin">Signin Now</Link></p>
+            <p className='my-2'>Already Have an Account <Link to="/Signin" className='text-decoration-none'>Signin Now</Link></p>
 
             <SocialLogin></SocialLogin>
 
-        </div>
+        </div >
     )
 }
 

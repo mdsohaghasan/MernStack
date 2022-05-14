@@ -15,15 +15,13 @@ function Signin() {
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
 
-    const [signInWithEmailAndPassword, user, error] = useSignInWithEmailAndPassword(auth);
-    // const [signInWithGoogle] = useSignInWithGoogle(auth);
-    // const [signInWithGithub] = useSignInWithGithub(auth);
-    // const [signInWithFacebook] = useSignInWithFacebook(auth);
+    const [signInWithEmailAndPassword, user, loading, error] = useSignInWithEmailAndPassword(auth);
+
 
     let errorElement;
     if (error) {
         errorElement = <div>
-            <p>Error: {error?.message} </p>
+            <p className='text-danger'>Error: {error?.message} </p>
         </div>
     }
 
@@ -80,8 +78,8 @@ function Signin() {
             </div>
 
             {errorElement}
-            <p>new to user <Link to="/Register">Register Now</Link></p>
-            <p>Forget Your Password? <button class='btn btn-link' onClick={resetPassword}>Reset Pasword</button> </p>
+            <p className='my-2'>new to user <Link to="/Register" className='text-decoration-none'>Register Now</Link></p>
+            <p>Forget Your Password? <button class='btn btn-link text-decoration-none' onClick={resetPassword}>Reset Pasword</button> </p>
             <ToastContainer />
             <SocialLogin></SocialLogin>
         </div>
