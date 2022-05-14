@@ -16,9 +16,16 @@ function Signin() {
     const from = location.state?.from?.pathname || '/'
 
     const [signInWithEmailAndPassword, user, error] = useSignInWithEmailAndPassword(auth);
-    const [signInWithGoogle] = useSignInWithGoogle(auth);
-    const [signInWithGithub] = useSignInWithGithub(auth);
-    const [signInWithFacebook] = useSignInWithFacebook(auth);
+    // const [signInWithGoogle] = useSignInWithGoogle(auth);
+    // const [signInWithGithub] = useSignInWithGithub(auth);
+    // const [signInWithFacebook] = useSignInWithFacebook(auth);
+
+    let errorElement;
+    if (error) {
+        errorElement = <div>
+            <p>Error: {error?.message} </p>
+        </div>
+    }
 
     if (user) {
         navigate(from, { replace: true });
@@ -66,12 +73,13 @@ function Signin() {
                                 <label class="form-check-label" for="exampleCheck1">Check me out</label>
                             </div>
                             <button type="submit" class="btn btn-primary w-100">Sign In Now</button>
+
                         </form>
                     </div>
                 </div>
             </div>
 
-
+            {errorElement}
             <p>new to user <Link to="/Register">Register Now</Link></p>
             <p>Forget Your Password? <button class='btn btn-link' onClick={resetPassword}>Reset Pasword</button> </p>
             <ToastContainer />
