@@ -5,6 +5,7 @@ import {
     // useUpdateProfile
 } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
+import SocialLogin from '../Signin/SocialLogin/SocialLogin';
 
 
 function Register() {
@@ -73,6 +74,7 @@ function Register() {
                     </div>
                 </div>
             </div>
+            <SocialLogin></SocialLogin>
             <p>Already user <Link to="/Signin">Signin Now</Link></p>
         </div>
     )

@@ -49,10 +49,7 @@ function Signin() {
     return (
         <div className='w-50 mx-auto'>
             <h2>SignIn Now</h2>
-            <SocialLogin></SocialLogin>
-            {/* <button onClick={() => signInWithGoogle()} className="btn btn-primary">Google Singin</button>
-            <button onClick={() => signInWithGithub()} className="btn btn-primary m-3">Github Singin</button>
-            <button onClick={() => signInWithFacebook()} className="btn btn-primary">Facebook Singin</button> */}
+
             <div class="container">
                 <div class="row">
                     <div class="col">
@@ -73,6 +70,7 @@ function Signin() {
                     </div>
                 </div>
             </div>
+            <SocialLogin></SocialLogin>
 
             <p>new to user <Link to="/Register">Register Now</Link></p>
             <p>Forget Your Password? <button class='btn btn-link' onClick={resetPassword}>Reset Pasword</button> </p>
