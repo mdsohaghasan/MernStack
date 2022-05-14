@@ -38,17 +38,12 @@ function Headers() {
               <li class="nav-item">
                 <Link to="/About" class="nav-link">About</Link>
               </li>
-              {/* <li class="nav-item">
-                <Link to="/Register" class="nav-link">Register</Link>
-              </li> */}
-              {/* username show */}
 
               <li class="nav-item">
                 {
                   user ?
-                    <p class="nav-link">{user.email}</p>
+                    <p class="nav-link">{user.displayName}</p>
                     :
-                    // <Link to="/Register" class="nav-link">Register</Link>
                     < Link to="/Signin" class="nav-link">Signin</Link>
                 }
               </li>
@@ -58,7 +53,6 @@ function Headers() {
                   user ?
                     <button onClick={handleSignOut} class="nav-link btn btn-light">Sign Out</button>
                     :
-                    // < Link to="/Signin" class="nav-link">Signin</Link>
                     <Link to="/Register" class="nav-link">Register</Link>
                 }
               </li>
