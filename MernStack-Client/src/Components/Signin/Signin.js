@@ -10,7 +10,7 @@ function Signin() {
 
     // const [email, setEmail] = useState('');
     // const [password, setPassword] = useState('');
-    // const [error, setError] = useState('');
+    // // const [error, setError] = useState('');
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/'
@@ -42,8 +42,8 @@ function Signin() {
     const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
     const resetPassword = async () => {
 
-        if (email) {
-            await sendPasswordResetEmail(email);
+        if (user) {
+            await sendPasswordResetEmail(user);
             toast('Sent email');
         }
         else {
