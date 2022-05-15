@@ -1,4 +1,5 @@
 import React from 'react'
+import PageTitle from '../Home/PageTitle';
 import './About.css';
 import img from './img/sohag.png'
 
