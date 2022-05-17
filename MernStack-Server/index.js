@@ -82,7 +82,7 @@ async function run() {
         //     const cursor = inventoryCollection.find(query);
         //     const items = await cursor.toArray();
         //     res.send(items)
-        // });
+        // });  
 
         // PRODUCT ITEM ALL LOAD 
         app.get('/Items', async (req, res) => {
