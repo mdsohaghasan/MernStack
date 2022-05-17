@@ -77,11 +77,33 @@ async function run() {
         //=========== START INVENTORY ITEM ENDPOINT ============
 
         // PRODUCT ITEM ALL LOAD 
+        // app.get('/Items', async (req, res) => {
+        //     const query = {};
+        //     const cursor = inventoryCollection.find(query);
+        //     const items = await cursor.toArray();
+        //     res.send(items)
+        // });
+
+        // PRODUCT ITEM ALL LOAD 
         app.get('/Items', async (req, res) => {
+            const pages = parseInt(req.query.pages);
+            const size = parseInt(req.query.size);
             const query = {};
             const cursor = inventoryCollection.find(query);
-            const items = await cursor.toArray();
+            let items
+            if (pages || size) {
+                items = await cursor.skip(pages * size).limit(size).toArray();
+            }
+            else {
+                items = await cursor.toArray();
+            }
             res.send(items)
+        });
+
+        // PRODUCT ITEM ALL LOAD FOR PAGINATION
+        app.get('/ItemsCount', async (req, res) => {
+            const count = await inventoryCollection.estimatedDocumentCount();
+            res.send({ count });
         });
 
         // PRODUCT ITEM SINGLE LOAD

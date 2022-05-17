@@ -1,14 +1,30 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import './InventoryItem.css';
 
 function InventoryItem() {
-
+    const [pages, setpages] = useState(0);
+    const [size, setSize] = useState(10);
     const [Itemes, setItemes] = useState([]);
     useEffect(() => {
-        fetch("https://thawing-harbor-02230.herokuapp.com/Items/")
+        fetch(`http://localhost:5000/Items?pages=${pages}&size=${size}`)
             .then((res) => res.json())
             .then((data) => setItemes(data));
+    }, [pages, size]);
+
+    // https://thawing-harbor-02230.herokuapp.com/Items/ 
+
+    // pagination
+    const [pagecount, setpagecount] = useState(0);
+    useEffect(() => {
+        fetch("http://localhost:5000/ItemsCount/")
+            .then((res) => res.json())
+            .then((data) => {
+                const count = data.count
+                const pages = Math.ceil(count / 10);
+                setpagecount(pages);
+            });
     }, []);
 
     // delete button
@@ -38,7 +54,7 @@ function InventoryItem() {
             <div className="Itmes-container container">
                 <div class="row">
                     {Itemes.map((item) => (
-                        // <div class="row">
+
                         <div class="col-sm-6">
                             <div class="card">
                                 <div class="card-body">
@@ -58,8 +74,28 @@ function InventoryItem() {
 
                     ))}
                 </div>
+                {/* pagination button */}
+                <div className="pagination">
+                    {
+                        [...Array(pagecount).keys()]
+
+                            .map(number => <button
+                                className={pages === number ? 'selected' : ''}
+                                // "btn btn-primary m-2"
+                                onClick={() => setpages(number)}> {number}</button>)
+
+
+                    }
+
+                    <select onChange={e => setSize(e.target.value)}>
+                        <option value='10' selected>10</option>
+                        <option value='12'>12</option>
+                        <option value='15'>15</option>
+                    </select>
+
+                </div>
             </div>
-        </div>
+        </div >
 
     )
 }
