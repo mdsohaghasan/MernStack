@@ -10,14 +10,11 @@ function MyItemsHook() {
     const [Itemes, setItemes] = useState([]);
     useEffect(() => {
         const email = user.email;
-        fetch(`https://thawing-harbor-02230.herokuapp.com/MyItems?email=${email}`)
+        fetch(`http://localhost:5000/MyItems?email=${email}`)
             .then((res) => res.json())
             .then((data) => setItemes(data));
     }, [user]);
 
-    if (user) {
-        console.log('user : ', user.email)
-    }
 
     // delete button
     const handleDelete = id => {
@@ -51,7 +48,6 @@ function MyItemsHook() {
                                 <div class="card-body">
                                     <img src={item.img} alt="item-pic" />
                                     <h5 class="card-title">Name : {item.name}</h5>
-                                    <h5 class="card-title">email : {item.email}</h5>
                                     <h5 class="card-title">Price : {item.price}</h5>
                                     <h5 class="card-title">Quantity : {item.quantity}</h5>
                                     <p class="card-text">ShortDes : {item.description}</p>

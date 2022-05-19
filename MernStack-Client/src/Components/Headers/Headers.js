@@ -51,6 +51,15 @@ function Headers() {
               <li class="nav-item">
                 {
                   user ?
+                    < Link to="/MyAccount" class="nav-link">MyAccount</Link>
+                    :
+                    < Link to="/Signin" class="nav-link">SIGNIN</Link>
+                }
+              </li>
+
+              <li class="nav-item">
+                {
+                  user ?
                     <button onClick={handleSignOut} class="nav-link btn btn-light">SIGNOUT</button>
                     :
                     <Link to="/Register" class="nav-link">REGISTER</Link>
