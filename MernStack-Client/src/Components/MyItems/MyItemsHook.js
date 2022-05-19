@@ -10,7 +10,12 @@ function MyItemsHook() {
     const [Itemes, setItemes] = useState([]);
     useEffect(() => {
         const email = user.email;
-        fetch(`http://localhost:5000/MyItems?email=${email}`)
+        const url = `http://localhost:5000/MyItems?email=${email}`
+        fetch(url, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
             .then((res) => res.json())
             .then((data) => setItemes(data));
     }, [user]);

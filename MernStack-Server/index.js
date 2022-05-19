@@ -23,6 +23,23 @@ async function run() {
         const myCollection = client.db('warehouse').collection('MyItems');
         console.log('Database Connect Hoise')
 
+        //VERIFY JWT
+        function verifyJWT(req, res, next) {
+            const authHeader = req.headers.authorization
+            if (!authHeader) {
+                return res.status(401).send({ messege: 'unauthorized accsess' })
+            }
+            const accsessToken = authHeader.split(' ')[1];
+            jwt.verify(accsessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
+                if (err) {
+                    return res.status(403).send({ messege: 'FORBIDDEN accsess' });
+                }
+                req.decoded = decoded
+            })
+
+            next()
+        }
+
         // AUTH USER LOGIN 
         app.post('/Signin', async (req, res) => {
             const user = req.body;
@@ -31,12 +48,18 @@ async function run() {
         });
 
         // PRODUCT (MYITEM) ALL LOAD 
-        app.get('/MyItems', async (req, res) => {
+        app.get('/MyItems', verifyJWT, async (req, res) => {
+            // const decodedEmail = req.decoded.email
             const email = req.query.email;
+            // if (email === decodedEmail) {
             const query = { email: email };
             const cursor = myCollection.find(query);
             const items = await cursor.toArray();
             res.send(items)
+            // }
+            // else {
+            //     return res.status(403).send({ messege: 'FORBIDDEN accsess' });
+            // }
         });
 
         // PRODUCT (MYITEM) SINGLE LOAD
