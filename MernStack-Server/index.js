@@ -1,4 +1,5 @@
 const express = require('express')
+const jwt = require('jsonwebtoken');
 const app = express()
 var cors = require('cors')
 require('dotenv').config()
@@ -21,6 +22,13 @@ async function run() {
         const inventoryCollection = client.db('warehouse').collection('Items');
         const myCollection = client.db('warehouse').collection('MyItems');
         console.log('Database Connect Hoise')
+
+        // AUTH USER LOGIN 
+        app.post('/Signin', async (req, res) => {
+            const user = req.body;
+            const token = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '1d' });
+            res.send({ token })
+        });
 
         // PRODUCT (MYITEM) ALL LOAD 
         app.get('/MyItems', async (req, res) => {
