@@ -1,7 +1,11 @@
 import React from 'react'
 import { useForm } from "react-hook-form";
+import { useAuthState } from 'react-firebase-hooks/auth';
+import auth from '../../../firebase.init';
+
 
 function AddMyItem() {
+    const [user] = useAuthState(auth);
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         const url = `https://thawing-harbor-02230.herokuapp.com/MyItems/`;
@@ -24,6 +28,7 @@ function AddMyItem() {
 
             <form className='d-flex flex-column' onSubmit={handleSubmit(onSubmit)}>
                 <input className='mb-2' placeholder='name'{...register("name")} />
+                <input className='mb-2' value={user.email} placeholder='name'{...register('email')} />
                 <input className='mb-2' placeholder='price' type="number"{...register("price")} />
                 <input className='mb-2' placeholder='quantity' type="number"{...register("quantity")} />
                 <input className='mb-2' placeholder='description'{...register("description")} />
