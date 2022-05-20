@@ -34,10 +34,10 @@ async function run() {
                 const accsessToken = authHeader.split(' ')[1];
                 jwt.verify(accsessToken, process.env.ACCESS_TOKEN_SECRET, (err, decoded) => {
                     console.log('test tokemn', accsessToken)
-                    // if (err) {
-                    //     return res.status(403).send({ messege: 'FORBIDDEN accsess' });
-                    // }
-                    // req.decoded = decoded
+                    if (err) {
+                        return res.status(403).send({ messege: 'FORBIDDEN accsess' });
+                    }
+                    req.decoded = decoded
                 })
 
                 next()
@@ -52,21 +52,19 @@ async function run() {
         });
 
         // PRODUCT (MYITEM) ALL LOAD 
-        app.get('/MyItems',
-            // verifyJWT,
-            async (req, res) => {
-                // const decodedEmail = req.decoded.email
-                const email = req.query.email;
-                // if (email === decodedEmail) {
+        app.get('/MyItems', verifyJWT, async (req, res) => {
+            const decodedEmail = req.decoded.email
+            const email = req.query.email;
+            if (email === decodedEmail) {
                 const query = { email: email };
                 const cursor = myCollection.find(query);
                 const items = await cursor.toArray();
                 res.send(items)
-                // }
-                // else {
-                //     return res.status(403).send({ messege: 'FORBIDDEN accsess' });
-                // }
-            });
+            }
+            else {
+                return res.status(403).send({ messege: 'FORBIDDEN accsess' });
+            }
+        });
 
         // PRODUCT (MYITEM) SINGLE LOAD
         app.get('/MyItems/:id', async (req, res) => {
